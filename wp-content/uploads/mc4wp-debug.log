@@ -1,0 +1,8 @@
+[2016-07-05 14:02:02] ERROR: Form 444 > MailChimp API error: Error connecting to MailChimp. Operation timed out after 10001 milliseconds with 0 bytes received
+[2016-07-05 14:04:19] ERROR: Form 444 > MailChimp API error: List_RoleEmailMember: abc@gmail.com is an invalid email address and cannot be imported.
+[2016-07-05 14:04:28] ERROR: Form 444 > MailChimp API error: List_RoleEmailMember: abc@gmail.com is an invalid email address and cannot be imported.
+[2016-07-05 14:05:03] ERROR: Form 444 > MailChimp API error: List_RoleEmailMember: abc@gmail.com is an invalid email address and cannot be imported.
+[2016-07-05 14:05:18] ERROR: Form 444 > MailChimp API error: List_RoleEmailMember: abc@gmail.com is an invalid email address and cannot be imported.
+[2016-07-05 14:05:24] ERROR: Form 444 > MailChimp API error: List_RoleEmailMember: abc@gmail.com is an invalid email address and cannot be imported.
+[2016-07-05 14:05:29] ERROR: Form 444 > MailChimp API error: List_RoleEmailMember: abc@gmail.com is an invalid email address and cannot be imported.
+[2016-07-05 14:05:53] ERROR: Form 444 > MailChimp API error: The domain portion of the email address is invalid (the portion after the @: gmail.com1)
