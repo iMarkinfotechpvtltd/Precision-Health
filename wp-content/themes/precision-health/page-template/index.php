@@ -3,7 +3,10 @@
 ?> 
 
 <?php get_header(); ?>
- <div class="banner" style=" background-image: url(<?php echo esc_url(get_template_directory_uri());?>/images/banner.jpg);">
+ <?php	$image=get_post_meta(9,"home-banner",true);
+		$thumb = wp_get_attachment_image_src($image, 'banner-inner' );
+	  ?>
+    <div class="banner" style=" background-image: url(<?php echo $url = $thumb['0'];?>);">
         <div class="container">
 
             <div class="banner-text-cvr">
@@ -11,17 +14,16 @@
                     <div class="col-md-8 make-va">
                         <div class="banner-left-text ">
                             <h1>Precision Health<small>Spine and Sports Clinic</small></h1>
-                            <p>Duis nec viverra orci. Praesent feugiat pulvinar varius. Vestibulum venenatis ut mauris aliquam euismod. Quisque molestie porta sollicitudin. <a href="#" class="banner-btn-link">About us <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
+                            <p><?php the_field('banner-content',9); ?> <a href="<?php echo get_site_url(); ?>/about" class="banner-btn-link">About us <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
                         </div>
                     </div>
-					
-					
                     <div class="col-md-4 make-va">
                         <div class="banner-form">
                             <div class="banner-form-in">
                                 <h4>Complete the form</h4>
                                 <p>Duis nec viverra orci. Praesent feugiat pulvinar varius. Vestibulum venenatis ut mauris aliquam euismod. Quisque molestie porta sollicitudin. </p>
-                                <form role="form">
+                                <?php //echo do_shortcode('[contact-form-7 id="470" title="banner-form"]'); ?>
+						<form role="form">
                                     <div class="form-group">
                                         <input type="name" placeholder="Name" class="form-control">
                                     </div>
@@ -67,7 +69,7 @@
             </div>
 
         </div>
- </div>
+    </div>
 
 
     <div class="container">
@@ -83,16 +85,19 @@
                         </div>
                     </div>
                     <div class="why-choose-us-text">
-                        <p>Welcome to Precision Health Spine and Sports Clinic and congratulations for taking the first step towards better health!</p>
-
-                        <p>At Precision Health Spine and Sports Clinic our passion is to provide complete patient-focused treatment and management. That is why we provide manual therapies like Chiropractic and Physiotherapy alongside complimentary services such as Acupuncture, Dietetics and Nutrition, Remedial Massage and Podiatry.</p>
-
-                        <a href="about-us.html" class="round-white-btn">About Us</a>
+					<?php
+							$include = get_pages('include=83');
+							$content = apply_filters('the_content',$include[0]->post_content);
+							echo $content;
+						?>
+                        <a href="<?php echo get_site_url(); ?>/about" class="round-white-btn">About Us</a>
                     </div>
                 </div>
             </div>
 
-           
+            <!--<div class="why-dr">
+                <img src="images/why-us-dr-img.png" class="img-responsive">
+            </div>-->
 
 
         </div>
@@ -101,17 +106,105 @@
 
     <div class="neck-comp-cvr">
         <div class="neck-comp-left">
-            <div class="neck-comp-left-img-cvr">
-                <img src="<?php echo esc_url(get_template_directory_uri());?>/images/neck-comp-img.jpg" class="img-responsive">
+            
+            <div class="con-couple-cvr">
+                <div class="con-couple-left">
+                    <div class="con-couple-left-list">
+                        <ul>
+						<?php
+								$args = array(
+									'type'                     => 'ctreated',
+									'orderby'                  => 'term_id',
+									'taxonomy'                 => 'conditions-treated-catagory',
+									);
+								$categories = get_categories( $args );
+								$time1 = 1.4;
+								$count=1;
+								foreach ( $categories as $category ) {
+									
+								
+							if($count <=7) {?>
+                            <li class="wow fadeInDown" data-wow-duration="<?php echo $time1; ?>s">
+                                <div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div>
+                                <div class="con-list-text">
+                                    <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name ?> <br></a>
+                                </div>
+
+                            </li>
+
+							<?php $time1 = $time1+0.2; } $count++; 
+							} ?> 
+                        </ul>
+                    </div>
+                    <div class="con-couple-left-img wow slideInRight" data-wow-duration="1s">
+					<?php	$image=get_post_meta(260,"boy_image",true);
+						$thumb = wp_get_attachment_image_src($image, 'full' );?>
+                        <img src="<?php echo $url = $thumb['0'];?>" class="img-responsive">
+                    </div>
+                </div>
+
+                <div class="con-couple-right">
+
+                    <div class="con-couple-right-list">
+                        <ul>
+						<?php
+								$args = array(
+									'type'                     => 'ctreated',
+									'orderby'                  => 'term_id',
+									'taxonomy'                 => 'conditions-treated-catagory',
+									);
+								$categories = get_categories( $args );
+								$time1 = 1.4;
+								$count=1;
+								foreach ( $categories as $category ) {
+									
+								
+							if($count >7) {?>
+						
+						
+                            <li class="wow fadeInDown" data-wow-duration="<?php echo $time1; ?>s">
+                                <div class="con-list-text">
+                                    <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name ?><br></a>
+                                </div>
+                                <div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div>
+
+                            </li>
+							
+							<?php $time1 = $time1+0.2; } $count++; 
+							} ?>
+                        </ul>
+                    </div>
+					<?php	$image=get_post_meta(260,"girl_image",true);
+						$thumb = wp_get_attachment_image_src($image, 'full' );?>
+                    <div class="con-couple-right-img wow slideInLeft" data-wow-duration="1s">
+                        <img src="<?php echo $url = $thumb['0'];?>" class="img-responsive">
+                    </div>
+
+                </div>
+
             </div>
+
+
+           
         </div>
         <div class="neck-comp-right">
-            <div class="neck-comp-right-inner">
-                <h1>Neck Complaints</h1>
-                <p>Curabitur tempus purus ut velit consectetur consectetur. Nunc in sapien laoreet, convallis ante id, egestas odio. Vestibulum viverra suscipit tempor. Vivamus lobortis mauris orci, a pretium purus euismod id. Nulla eros urna, malesuada ac nunc at, iaculis pretium nulla. Quisque at urna mauris. Nullam ultricies sit amet sem quis mattis. Aenean egestas turpis ut arcu tincidunt, sed iaculis ligula gravida. Donec bibendum tortor a sem porta laoreet. Suspendisse efficitur elit lorem, vel lacinia lectus dignissim id. Proin viverra libero egestas, cursus ex non, placerat erat. Mauris facilisis libero nunc, a condimentum felis eleifend sed. Aenean fringilla augue sem, at pellentesque ligula congue id.</p>
-                <p>
-                    Cras pharetra, ex et feugiat congue, ligula nisi laoreet sapien, non commodo turpis turpis eu turpis. Sed porta lorem eu auctor viverra. Cras eu finibus ligula. Nulla facilisi. Donec ex justo, faucibus eget interdum nec, varius a ligula. Ut volutpat leo finibus, sollicitudin eros vitae, congue lacus. Nulla sed elit non arcu cursus pellentesque.Nullam ultricies sit amet sem quis mattis. Aenean egestas turpis ut arcu tincidunt, sed iaculis ligula gravida. Donec bibendum tortor a sem porta laoreet. Suspendisse efficitur elit lorem, vel lacinia lectus dignissim id. </p>
-            </div>
+		<?php
+								$args = array(
+									'type'                     => 'ctreated',
+									'orderby'                  => 'term_id',
+									'taxonomy'                 => 'conditions-treated-catagory',
+									);
+								$categories = get_categories( $args );
+								$count=1;
+								foreach ( $categories as $category ) {
+									if($count==1)
+									{?>
+									<div class="neck-comp-right-inner content">
+										<h1><?php echo $name = $category->name ?></h1>
+										<p><?php echo $des = $category->description  ?>
+										</p>
+									</div>
+								<?php } $count++;}?>
         </div>
     </div>
 
@@ -122,61 +215,52 @@
                     <h1>Our 
 Team</h1>
                     <div class="slider-text">
-                        <p>Charbel is a graduate of two leading Australian Universities. He completed a Bachelor of Biological Science (Anatomy and Physiology) from the University of Western Sydney and continued his studies at Macquarie University with a Bachelor of Chiropractic Science and Masters of Chiropractic Science. </p>
-                        <p>After graduating Charbel began working with Medical Practitioners and continued to expand his skills in the treatment and management of chronic disease and sports injuries. He constantly attends seminars to keep up to date with current Best Practice Techniques. </p>
+                        <?php
+							$include = get_pages('include=132');
+							$content = apply_filters('the_content',$include[0]->post_content);
+							echo $content;
+						?>
                         
-                        <a href="team.html" class="round-white-btn">View All</a>
+                        <a href="<?php echo get_site_url(); ?>/teams" class="round-white-btn">View All</a>
                     </div>
                 </div>
 
-                <div class="col-md-7 ">
-                    <div class="row">
+            <div class="col-md-7 ">
+                <div class="row">
                     <div id="owl-demo" class="owl-carousel team-carousel owl-theme">
+						<?php
+					global $post;
+					$type = 'team';
+					$args=array(
+					  'post_type' => $type,
+					  'post_status' => 'publish',
+					  'order'      => 'ASC'
+					  );
+					$my_query = new WP_Query($args);
+					if( $my_query->have_posts() ) {
+					  while ($my_query->have_posts()) : $my_query->the_post(); 
+					   $newpost = $post->ID;
+					 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'affilation-images' );
+						$url = $image_attributes[0];
+						?>
                         <div class="item">
                             <div class="col-sm-12">
                                 <div class="item-inner">
-                                <img src="<?php echo esc_url(get_template_directory_uri());?>/images/team/t1.jpg" class="img-responsive">
-                                <h3>Mr Charbel Daher </h3>
-                                <p>(Chiropractor), Founder </p>
+                                <img src="<?php echo $url; ?>" class="img-responsive">
+                                <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                                <p><?php the_field('designation',$my_query->ID); ?></p>
                             </div>
                             </div>
                         </div>
-
-                        <div class="item">
-                            <div class="col-sm-12">
-                                <div class="item-inner">
-                                <img src="<?php echo esc_url(get_template_directory_uri());?>/images/team/t2.jpg" class="img-responsive">
-                                <h3>Ms Vivien Voon </h3>
-                                <p>(Chiropractor) </p>
-                            </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="col-sm-12">
-                                <div class="item-inner">
-                                <img src="<?php echo esc_url(get_template_directory_uri());?>/images/team/t1.jpg" class="img-responsive">
-                                <h3>Mr Charbel Daher </h3>
-                                <p>(Chiropractor), Founder </p>
-                            </div>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="col-sm-12">
-                                <div class="item-inner">
-                                <img src="<?php echo esc_url(get_template_directory_uri());?>/images/team/t2.jpg" class="img-responsive">
-                                <h3>Mr Charbel Daher </h3>
-                                <p>(Chiropractor), Founder </p>
-                            </div>
-                            </div>
-                        </div>
+					  <?php
+					  endwhile;
+					}?>
 
                     </div>
 
-                        </div>
-
                 </div>
+
+            </div>
 
 
             </div>
@@ -186,10 +270,10 @@ Team</h1>
     <div class="container">
         <div class="our-product-heading">
             <div class="our-product-left">
-                <h1>Our Categories</h1>
+                <h1>Our Services</h1>
             </div>
             <div class="our-product-right">
-                <a href="#" class="view-all-btn">View All</a>
+                <a href="<?php echo get_site_url(); ?>/services" class="view-all-btn">View All</a>
             </div>
         </div>
     </div>
@@ -198,65 +282,53 @@ Team</h1>
         <div class="container">
             <div class="row">
             <div id="owl-demo-2" class="owl-carousel team-carousel owl-theme">
-                        <div class="item">
+			<?php
+				$args = array(
+					'type'                     => 'faq',
+					'orderby'                  => 'term_id',
+					'taxonomy'                 => 'service-catagory',
+					);
+				$categories = get_categories( $args );
+				foreach ( $categories as $category ) {	
+				?>
+			
+                <div class="item">
                             <div class="col-sm-12">
-                    <div class="product-list">
-                        <div class="product-img-cvr">
-                            <img src="<?php echo esc_url(get_template_directory_uri());?>/images/product-img-1.jpg" class="img-responsive">
+                         <div class="service-list">
+                        <div class="service-img">
+                            <img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive">
                         </div>
-                        <div class="product-name">
-                            <p><a href="#"><b>Chiropractic</b> Products</a></p>
-                        </div>
-                    </div>
-                </div>
-                
-                        </div>
-                
-                <div class="item">
-                            <div class="col-sm-12 col-xs-12">
-                    <div class="product-list">
-                        <div class="product-img-cvr">
-                            <img src="<?php echo esc_url(get_template_directory_uri());?>/images/product-img-1.jpg" class="img-responsive">
-                        </div>
-                        <div class="product-name">
-                            <p><a href="#"><b>Chiropractic</b> Products</a></p>
-                        </div>
-                    </div>
-                </div>
-                
-                        </div>
-                
-                <div class="item">
-                            <div class="col-sm-12 col-xs-12">
-                    <div class="product-list">
-                        <div class="product-img-cvr">
-                            <img src="<?php echo esc_url(get_template_directory_uri());?>/images/product-img-1.jpg" class="img-responsive">
-                        </div>
-                        <div class="product-name">
-                            <p><a href="#"><b>Chiropractic</b> Products</a></p>
+                        <div class="service-text">
+                            <h4><?php echo $name = $category->name ?></h4>
+                            <ul>
+							<?php 
+                               $posts=get_posts(array(
+										   'showposts' => -1,
+										   'post_type' => 'service',
+										   'tax_query' => array(
+											   array(
+											   'taxonomy' => 'service-catagory',
+											   'field' => 'name',
+											   'terms' => array($name))
+										   ),
+										   'orderby' => 'title',
+										   'order' => 'DESC')
+										);
+										$count=1;
+										foreach($posts as $post)
+										{ ?>
+                            
+                                <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+										<?php } ?>
+                            </ul>
                         </div>
                     </div>
+                
                 </div>
                 
-                        </div>
-                
-                <div class="item">
-                            <div class="col-sm-12 col-xs-12">
-                    <div class="product-list">
-                        <div class="product-img-cvr">
-                            <img src="<?php echo esc_url(get_template_directory_uri());?>/images/product-img-1.jpg" class="img-responsive">
-                        </div>
-                        <div class="product-name">
-                            <p><a href="#"><b>Chiropractic</b> Products</a></p>
-                        </div>
-                    </div>
-                </div>
-                
-                        </div>
-                
-                
-                
-                
+                </div>  
+				
+				<?php } ?>
             </div>
             
             </div>
@@ -265,41 +337,45 @@ Team</h1>
 
     </div>
 
-<div class="container">
+    <div class="container">
         <div class="blog-cvr">
             <div class="blog-heading">
                 <div class="blog-heading-left">
                     <h1>Blog</h1>
                 </div>
                 <div class="blog-heading-right">
-                    <a href="#" class="view-all-btn">View All</a>
+                    <a href="<?php echo get_site_url(); ?>/blog" class="view-all-btn">View All</a>
                 </div>
             </div>
 
             <div class="row">
+					<?php global $post;
+					$loopb = new WP_Query( array( 'post_type' => 'post', 'posts_per_page' =>2, 'order'  => 'DESC') ); 
+					while ( $loopb->have_posts() ) : $loopb->the_post(); ?>
+					<?php $newpost = $post->ID;
+							 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'home-blog-image' );
+								$url = $image_attributes[0];
+						?>
                 <div class="col-md-6">
                     <div class="blog-page-cover">
                         <div class="blog-img wow fadeIn" data-wow-duration="2s">
-                            <img src="<?php echo esc_url(get_template_directory_uri());?>/images/blog-post-1.jpg" class="img-responsive">
+                            <img src="<?php echo $url;?>" class="img-responsive">
                         </div>
 
                         <div class="blog-text wow bounce" data-wow-duration="2s">
                             <div class="blog-text-inner">
-                                <h1>Lorem Ipsum is simply 
-Dummy text</h1>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived</p>
+                                <h1><?php the_title(); ?></h1>
+                                <p><?php the_content(); ?></p>
                                 <div class="blog-date">
-                                    <p>Sat 23 Jan 2016</p>
+                                    <p><?php echo get_the_date('D j M Y', $post->ID); ?></p>
                                 </div>
 
-                                <a href="#" class="blog-read-btn">Read More</a>
+                                <a href="<?php the_permalink(); ?>" class="blog-read-btn">Read More</a>
                                 <div class="blog-social">
                                     <ul>
                                         <li><a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
                                         <li><a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li>
-                                            <a href="#" target="_blank"> <i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                        </li>
+                                        <li> <a href="#" target="_blank"> <i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                                     </ul>
                                 </div>
 
@@ -311,42 +387,7 @@ Dummy text</h1>
                     </div>
 
                 </div>
-
-                <div class="col-md-6">
-                    <div class="blog-page-cover">
-                        <div class="blog-img wow fadeIn" data-wow-duration="2s">
-                            <img src="<?php echo esc_url(get_template_directory_uri());?>/images/blog-post-2.jpg" class="img-responsive">
-                        </div>
-
-                        <div class="blog-text wow bounce" data-wow-duration="2s">
-                            <div class="blog-text-inner">
-                                <h1>Lorem Ipsum is simply 
-Dummy text</h1>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived</p>
-                                <div class="blog-date">
-                                    <p>Sat 23 Jan 2016</p>
-                                </div>
-
-                                <a href="#" class="blog-read-btn">Read More</a>
-                                <div class="blog-social">
-                                    <ul>
-                                        <li><a href="#" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li><a href="#" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li>
-                                            <a href="#" target="_blank"> <i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-
+				<?php endwhile; ?>
 
             </div>
 
@@ -355,29 +396,29 @@ Dummy text</h1>
         <div class="find-us-cvr">
             <div class="find-us-heading">
                 <h1>Find Us</h1>
-                <p>Donec neque lectus, dapibus eu pulvinar eget, volutpat nec elit. Nulla faucibus tempor felis, ac luctus nisi. Vestibulum id lectus molestie, gravida mauris quis, posuere arcu. </p>
+                <p><?php the_field('find-us-content',9); ?></p>
             </div>
 
             <div class="row">
                 <div class="col-md-3">
                     <div class="find-info">
                         <h4>Address</h4>
-                        <p>Suite 11, Charrington Court <br>35 Old Northern Road Baulkham Hills <br>NSW Sydney 2153</p>
+                        <p><?php the_field('address',11); ?></p>
                         <a href="#" class="google-link">View on Google maps</a>
                     </div>
 
                     <div class="find-info">
                         <h4>Call Us</h4>
                         <ul>
-                            <li>Phone <a href="tel:(02) 9639 7337">(02) 9639 7337</a></li>
-                            <li>Mobile <a href="tel:(04) 0222 7337">(04) 0222 7337</a></li>
+                            <li>Phone <a href="tel:<?php the_field('phone',11); ?>"><?php the_field('phone',11); ?></a></li>
+                           
 
                         </ul>
                     </div>
 
                     <div class="find-info">
                         <h4>Email</h4>
-                        <a href="mailto:reception@precisionhealthclinics.com.au">reception@precisionhealthclinics.com.au</a>
+                        <a href="mailto:<?php the_field('reception-email',11); ?>"><?php the_field('reception-email',11); ?></a>
 
                     </div>
 
@@ -386,47 +427,34 @@ Dummy text</h1>
                 </div>
                 <div class="col-md-8 col-md-offset-1">
                     <div class="find-us-form">
-
-                        <form role="form">
-
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <input type="name" class="form-control" placeholder="Name">
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <div class="col-sm-6">
-                                    <input type="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" placeholder="Subject">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="col-sm-6">
-                                    <input type="tel" class="form-control" placeholder="Contact Number">
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <div class="col-sm-12">
-                                    <textarea class="form-control" placeholder="Message"></textarea>
-                                </div>
-                            </div>
-
-
-                            <button type="submit" class="find-us-btn">Submit <i class="fa fa-long-arrow-right"></i></button>
-
-                        </form>
+						
+						<?php echo do_shortcode('[contact-form-7 id="453" title="find us home page"]'); ?>
                     </div>
                 </div>
             </div>
 
         </div>
-	</div>
+
+
+
+    </div>
+	<script>
+		function pagination(id) {
+			var termid=id;
+			
+            jQuery.ajax({
+                type: "GET",
+                url: "<?php bloginfo('template_url'); ?>/page-template/page1.php",
+                data: {
+                    termid: termid, 
+                    format: 'raw'
+                },
+                success: function (resp) {
+					jQuery('.content').empty().append(resp);
+                }
+            });
+        }
+	</script>
+
 <?php get_footer(); ?>
+

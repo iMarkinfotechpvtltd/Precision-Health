@@ -578,8 +578,7 @@ header .navbar-right .dropdown-menu {
 }
 
 .why-choose-us-cvr {
-    padding-top: 120px;
-    padding-bottom: 140px;
+    padding: 80px 0;
     position: relative;
 }
 
@@ -593,11 +592,11 @@ header .navbar-right .dropdown-menu {
 .why-heading-cvr:after {
     content: "";
     position: absolute;
-    width: 86%;
+    width: 100%;
     height: 2px;
     background: #d9e9f0;
     right: 0;
-    bottom: 4px;
+    bottom: -15px;
 }
 
 .why-heading-cvr .why-heading-left {
@@ -629,7 +628,7 @@ header .navbar-right .dropdown-menu {
     font-size: 18px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 400;
-    padding-bottom: 15px;
+    padding-bottom:0;
 }
 
 .why-choose-us-text p {
@@ -844,7 +843,7 @@ header .navbar-right .dropdown-menu {
     display: table-cell;
     width: 33%;
     vertical-align: bottom;
-    background: url(../images/why-us-heart-icon.png) no-repeat;
+    /*background: url(../images/why-us-heart-icon.png) no-repeat;*/
     background-position: 100% 5%;
 }
 
@@ -1421,7 +1420,7 @@ footer p {
     margin-top: 48px;
 }
 
-.footer-end p {
+.footer-end p, .footer-end span {
     color: #6d6d6d;
     font-size: 16px;
     font-family: 'FuturaBT-Light';
@@ -3866,7 +3865,123 @@ article.no-border-art{
     margin-top: 24px;
 }
 
+/** New patient **/
 
+.new-patient-main h4{
+    color: #11a3e0;
+    font-size: 35px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 800;
+    line-height: 55px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.who-we-see-cvr{
+    border-bottom: solid 1px #dad7d4;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+}
+
+.new-patient-main ul.wws-list{
+    margin: 0;
+    padding: 0;
+}
+
+
+.new-patient-main ul.wws-list li{
+    font-family: 'FuturaBT-Light';
+    font-size: 15px;
+    color: #444444;
+    display: inline-block;
+    margin-right: 25px;
+    padding-left:20px;
+    position: relative;
+}
+
+.new-patient-main ul.wws-list li:before{
+    content: "\f007";
+    font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    color:#11a3e0;
+}
+
+.what-we-do-cvr{
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+.what-we-do-cvr .what-we-do-in article{
+    position: relative;
+    border-bottom: solid 1px #e1dfdd;
+    padding-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.what-we-do-cvr .what-we-do-in article:nth-last-child(1){
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.what-we-do-cvr article figure{
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 15px;
+    margin-left: 0;
+}
+
+.what-we-do-cvr article:nth-child(odd) figure{
+    float: right;
+    margin-left: 30px;
+    margin-right: 0px;
+}
+
+.what-we-do-cvr article h4{
+    color: #3d3d3d;
+    font-size: 20px;
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-align: left;
+    margin-top: 0;
+    line-height: normal;
+	display:inline-block;
+}
+
+.what-we-do-cvr article p{
+    font-family: 'FuturaBT-Light';
+    font-size: 15px;
+    color: #444444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.wps-btn{
+    display: inline-block;
+     font-family: 'FuturaBT-Light';
+    font-size: 20px;
+    color:#11a3e0;
+    text-transform: capitalize;
+    border-bottom: solid 1px #11a3e0;
+    margin: 30px 0 30px;
+}
+
+.wps-btn:hover, .wps-btn:focus{
+    color: #81ab42;
+    border-color:  #81ab42;
+}
+
+
+.powerdby img{
+    width: 100%;
+    max-width: 110px;
+}
 
 
 @media (min-width:1500px){
