@@ -22,8 +22,8 @@
                             <div class="banner-form-in">
                                 <h4>Complete the form</h4>
                                 <p>Duis nec viverra orci. Praesent feugiat pulvinar varius. Vestibulum venenatis ut mauris aliquam euismod. Quisque molestie porta sollicitudin. </p>
-                                <?php //echo do_shortcode('[contact-form-7 id="470" title="banner-form"]'); ?>
-						<form role="form">
+                                <?php echo do_shortcode('[contact-form-7 id="470" title="banner-form"]'); ?>
+						<!--        <form role="form">
                                     <div class="form-group">
                                         <input type="name" placeholder="Name" class="form-control">
                                     </div>
@@ -57,10 +57,42 @@
                                     <button type="submit" class="banner-form-btn">
                                         Send Message
                                     </button>
-
-
-
-                                </form>
+                                </form> -->
+								<script>
+								jQuery("#sub-btn").click(function()
+								{
+									if(jQuery('#check1').prop("checked") == true)
+									{
+										var name = jQuery('#name').val();
+										var email = jQuery('#email').val();
+										var phone = jQuery('#phone').val();
+										var age = jQuery('#age').val();
+										var msg = jQuery('#message').val();
+										var mrg = jQuery('#morning').val();
+										var aftn = jQuery('#afternoon').val();
+										var eve = jQuery('#evening').val();
+										jQuery.ajax(
+										{
+											type: "POST",
+											url: "<?php echo esc_url(get_template_directory_uri());?>/page-template/send.php",
+											data:{
+													name1:name,
+													email1:email,
+													phone1:phone,
+													age1:age,
+													msg1:msg,
+													mrg1:mrg,
+													aftn1:aftn,
+													eve1:eve
+												},
+												success: function(result)
+												{
+													alert(result);
+												}
+										});
+									}
+								})
+								</script>
                             </div>
                         </div>
 
@@ -125,7 +157,7 @@
 								
 							if($count <=7) {?>
                             <li class="wow fadeInDown" data-wow-duration="<?php echo $time1; ?>s">
-                                <div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div>
+                                 <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div></a>
                                 <div class="con-list-text">
                                     <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name ?> <br></a>
                                 </div>
@@ -166,7 +198,7 @@
                                 <div class="con-list-text">
                                     <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name ?><br></a>
                                 </div>
-                                <div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div>
+                                 <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div></a>
 
                             </li>
 							

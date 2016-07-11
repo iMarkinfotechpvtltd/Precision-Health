@@ -209,12 +209,7 @@
     </script>
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/bootstrap.min.js"></script>
 	
-	<script>
 	
-		jQuery( "ul li ul" ).addClass( "dropdown-menu" );
-		jQuery( "#menu-item-345" ).addClass( "dropdown" );
-		jQuery('#menu-item-345').append('<span class="caret dropdown-toggle" data-toggle="dropdown"></span>')
-	</script>
 </body>
 
 </html>
