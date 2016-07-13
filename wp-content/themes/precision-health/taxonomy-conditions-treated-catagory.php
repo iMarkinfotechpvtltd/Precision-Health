@@ -57,7 +57,7 @@
                            
 
                             <h5><?php echo $post->post_title; ?></h5>
-                            <?php echo $post->post_content; ?> 
+                            <p><?php echo $post->post_content; ?></p> 
 
                             <a href="<?php the_permalink(); ?>" class="head-neck-read-btn">read more</a>
 						
@@ -92,6 +92,7 @@
 							   'orderby' => 'title',
 							   'order' => 'DESC')
 							);?>
+							<div class="panel panel-default">
 							 <div class="panel-heading">
                                     <h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $count; ?>" <?php if($category->name != $current_category){?> class="collapsed" <?php } ?>>
@@ -99,7 +100,7 @@
 												<i class="fa fa-plus" aria-hidden="true"></i></span></a>
 								  </h4>
                                 </div>
-                            <div class="panel panel-default">
+                            
                                 <div id="collapse<?php echo $count; ?>" class="panel-collapse collapse <?php if($category->name == $current_category){ echo 'in'; } ?>">
                                     <div class="panel-body">
                                         <ul>

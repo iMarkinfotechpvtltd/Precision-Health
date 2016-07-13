@@ -434,6 +434,8 @@ add_image_size( 'blog-images', 750, 350, true );
 
 add_image_size( 'modality-images', 459, 330, true );
 
+add_image_size( 'home-blog-image', 647, 466, true );
+
 
 /*  custom post of faqs    */
 
@@ -784,3 +786,16 @@ function create_ConditionsTreated_taxonomies() {
 
 	register_taxonomy( 'conditions-treated-catagory', ctreated, $args );
 }
+
+// Removes showing results in Storefront theme
+ 
+add_action('init','delay_remove_result_count');
+ 
+function delay_remove_result_count() {
+remove_action( 'woocommerce_after_shop_loop', 'woocommerce_result_count', 20 );
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+}
+
+add_filter( 'woocommerce_show_page_title', '__return_false' );
+
+remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );

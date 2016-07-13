@@ -14,6 +14,7 @@
     <link href="<?php echo esc_url(get_template_directory_uri());?>/css/font-awesome.min.css" rel="stylesheet">
     <link href="<?php echo esc_url(get_template_directory_uri());?>/css/owl.carousel.css" rel="stylesheet">
     <link href="<?php echo esc_url(get_template_directory_uri());?>/css/style.css" rel="stylesheet">
+	 <link rel="stylesheet" href="<?php echo esc_url(get_template_directory_uri());?>/css/bootstrap-datepicker.min.css">
 
 
     

@@ -32,14 +32,22 @@
                            
 
                             <h5><?php echo $post->post_title; ?></h5>
-                            <?php echo $post->post_content; ?> 	
+                            <p><?php echo $post->post_content; ?></p> 	
 							
                         </article>
 							
      
                     </div>
+					 <div class="book-an-appo">
+                            <h5>Book Your Appointment</h5>
+							
+							<?php echo do_shortcode('[contact-form-7 id="472" title="appointment form"]'); ?>
+						
+					</div>
                 </div>
 
+				
+				
                 <div class="col-md-4 col-sm-4 col-xs-12">
                     <div class="custm-accordion head-neck-side-acc">
                         <div class="panel-group" id="accordion">
@@ -65,6 +73,7 @@
 							   'orderby' => 'title',
 							   'order' => 'DESC')
 							);?>
+							<div class="panel panel-default">
 							 <div class="panel-heading">
                                     <h4 class="panel-title">
 									<a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $count; ?>" <?php if($category->name != $name1[0]){?> class="collapsed" <?php } ?>>
@@ -72,7 +81,7 @@
 												<i class="fa fa-plus" aria-hidden="true"></i></span></a>
 								  </h4>
                                 </div>
-                            <div class="panel panel-default">
+                            
                                 <div id="collapse<?php echo $count; ?>" class="panel-collapse collapse <?php if($category->name == $name1[0]){ echo 'in'; } ?>">
                                     <div class="panel-body">
                                         <ul>

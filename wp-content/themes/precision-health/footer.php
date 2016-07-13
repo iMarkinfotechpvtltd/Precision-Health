@@ -8,8 +8,36 @@
  * @subpackage Twenty_Sixteen
  * @since Twenty Sixteen 1.0
  */
-?>
+?>  <script src="<?php echo esc_url(get_template_directory_uri());?>/js/bootstrap.min.js"></script>
+   
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
+	   <div class="container">
+    <div class="row">
+        <div class='col-sm-6'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker3'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            jQuery(function ($) {
+               $('#datetimepicker3').datetimepicker({
+                    format: 'LT'
+                });
+            });
+        </script>
+    </div>
+</div>
 
+ <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    
+      <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+      <!-- Javascript -->
+     
 		  <footer>
         <div class="container">
             <div class="row">
@@ -47,9 +75,10 @@
 
                         <div class="footer-form">
                             <h5>Register Newsletter</h5>
-                            
-                                <?php echo do_shortcode('[mc4wp_form id="468"]'); ?>
-                            
+                            <form>
+                                <input type="email" placeholder="Enter Your Email Address">
+                                <input type="submit" value="Submit">
+                            </form>
                         </div>
 
                     </div>
@@ -106,14 +135,47 @@
 
     </footer>
 
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Request to get Price</h4>
+      </div>
+      <div class="modal-body">
+	   
+        <?php echo do_shortcode('[contact-form-7 id="223" title="price request"]'); ?>
+		
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 	<?php wp_footer(); ?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+   
     <!-- Include all compiled plugins (below), or include individual files as needed -->
+	
+	
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/owl.carousel.min.js"></script>
+	<link rel="stylesheet" href="http://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
+		 <script src="http://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script>
+		(function($){
+		   jQuery(window).on("load",function(){
+				jQuery(".content").mCustomScrollbar();
+			   axis:"y"
+			});
+		})(jQuery);
+	   </script>
     <script>
         jQuery(document).ready(function () {
 
@@ -207,9 +269,28 @@
     <script>
         new WOW().init();
     </script>
-    <script src="<?php echo esc_url(get_template_directory_uri());?>/js/bootstrap.min.js"></script>
+  
+    <script>
 	
-	
+		jQuery( "ul li ul" ).addClass( "dropdown-menu" );
+		jQuery( "#menu-item-345" ).addClass( "dropdown" );
+		jQuery('#menu-item-345').append('<span class="caret dropdown-toggle" data-toggle="dropdown"></span>');
+	</script>
+		<script>
+		jQuery(function() {
+		var date = new Date();
+		jQuery('#datepicker-13').datepicker({
+		minDate: 0
+		});
+
+		}); 
+		</script>
+	  <script>
+         jQuery(function() {
+            jQuery( "#timepicker" ).datepicker();
+            //jQuery( "#datepicker-13" ).datepicker("show");
+         });
+      </script>
 </body>
 
 </html>
