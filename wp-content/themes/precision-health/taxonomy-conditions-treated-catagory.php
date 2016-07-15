@@ -57,7 +57,7 @@
                            
 
                             <h5><?php echo $post->post_title; ?></h5>
-                            <p><?php echo $post->post_content; ?></p> 
+                            <p><?php $content = $post->post_content; echo mb_strimwidth($content, 0, 600)." ..."; ?></p> 
 
                             <a href="<?php the_permalink(); ?>" class="head-neck-read-btn">read more</a>
 						

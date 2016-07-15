@@ -544,7 +544,7 @@ td {
 	padding: 0.4375em;
 }
 
-/* Placeholder text color -- selectors need to be separate to work. */
+/* Placeholder text color -- selectors need to be separate to work. 
 ::-webkit-input-placeholder {
 	color: #686868;
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
@@ -559,18 +559,18 @@ td {
 	color: #686868;
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
 	opacity: 1;
-	/* Since FF19 lowers the opacity of the placeholder by default */
+	
 }
 
 :-ms-input-placeholder {
 	color: #686868;
 	font-family: Montserrat, "Helvetica Neue", sans-serif;
-}
+}*/
 
 
 /**
  * 5.0 - Forms
- */
+ 
 
 input {
 	line-height: normal;
@@ -648,7 +648,7 @@ textarea:focus {
 	border-color: #007acc;
 	color: #1a1a1a;
 	outline: 0;
-}
+}*/
 
 .post-password-form {
 	margin-bottom: 1.75em;
@@ -852,7 +852,7 @@ a:active {
 	width: 48px;
 }
 
-.dropdown-toggle:after {
+/**.dropdown-toggle:after {
 	border: 0 solid #d1d1d1;
 	border-left-width: 1px;
 	content: "\f431";
@@ -879,7 +879,7 @@ a:active {
 
 .dropdown-toggle.toggled-on:after {
 	content: "\f432";
-}
+}**/
 
 .site-header .main-navigation + .social-navigation {
 	margin-top: 1.75em;
@@ -2708,7 +2708,7 @@ p > video {
  */
 
 @media screen and (min-width: 44.375em) {
-	body:not(.custom-background-image):before,
+	/**body:not(.custom-background-image):before,
 	body:not(.custom-background-image):after {
 		background: inherit;
 		content: "";
@@ -2730,7 +2730,7 @@ p > video {
 
 	body:not(.custom-background-image):after {
 		bottom: 0;
-	}
+	}**/
 
 	.site {
 		margin: 21px;

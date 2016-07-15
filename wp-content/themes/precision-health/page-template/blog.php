@@ -50,7 +50,7 @@ while ( $loopb->have_posts() ) : $loopb->the_post(); ?>
                             </div>
                             
                             <div class="blog-main-text">
-                                <p><?php the_content(); ?></p>
+                                <p><?php $content = get_the_content(); echo mb_strimwidth($content, 0, 400)." ..."; ?></p>
                             </div>
                             
                             <div class="blog-more">

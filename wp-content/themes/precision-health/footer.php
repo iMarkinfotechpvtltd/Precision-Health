@@ -9,29 +9,8 @@
  * @since Twenty Sixteen 1.0
  */
 ?>  <script src="<?php echo esc_url(get_template_directory_uri());?>/js/bootstrap.min.js"></script>
+<script src="<?php echo esc_url(get_template_directory_uri());?>/js/validation.js"></script>
    
- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.1/js/bootstrap-datepicker.min.js"></script>
-	   <div class="container">
-    <div class="row">
-        <div class='col-sm-6'>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker3'>
-                    <input type='text' class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
-                    </span>
-                </div>
-            </div>
-        </div>
-        <script type="text/javascript">
-            jQuery(function ($) {
-               $('#datetimepicker3').datetimepicker({
-                    format: 'LT'
-                });
-            });
-        </script>
-    </div>
-</div>
 
  <link href="http://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     
@@ -126,7 +105,7 @@
             <div class="container">
                 <p>&copy; 2016 Precisionhealth. All rights reserved
                     <span class="powerdby pull-right">
-                    Powered by <a href="http://imarkinfotech.com" target="_blank"><img src="http://aestheticsmedical.stagingdevsite.com/imark_aestheticsmedical/wp-content/themes/aestheticsmedical/images/imark-logo.png"></a>
+                    Powered by <a href="http://imarkinfotech.com" target="_blank"><img src="<?php echo esc_url(get_template_directory_uri());?>/images/Imark-Powered-By.svg"></a>
                 </span>
                 </p>
 
@@ -271,26 +250,10 @@
     </script>
   
     <script>
-	
 		jQuery( "ul li ul" ).addClass( "dropdown-menu" );
 		jQuery( "#menu-item-345" ).addClass( "dropdown" );
 		jQuery('#menu-item-345').append('<span class="caret dropdown-toggle" data-toggle="dropdown"></span>');
 	</script>
-		<script>
-		jQuery(function() {
-		var date = new Date();
-		jQuery('#datepicker-13').datepicker({
-		minDate: 0
-		});
-
-		}); 
-		</script>
-	  <script>
-         jQuery(function() {
-            jQuery( "#timepicker" ).datepicker();
-            //jQuery( "#datepicker-13" ).datepicker("show");
-         });
-      </script>
 </body>
 
 </html>

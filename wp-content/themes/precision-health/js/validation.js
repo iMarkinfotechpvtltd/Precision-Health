@@ -1,12 +1,15 @@
 //Date time picker
 
-		var nowDate = new Date();
+		
+		
 		jQuery(function() {
-            jQuery( "#datepicker-13" ).datepicker();
-            //jQuery( "#datepicker-13" ).datepicker("show");
-			format: 'dd/MM/yyyy',
-			startDate: nowDate,
-			});
+		var date = new Date();
+		jQuery('#datepicker-13').datepicker({
+		minDate: 0
+		});
+
+		}); 
+		
 
 //name field validation
 jQuery("input[name='name']").keydown(function(e) {

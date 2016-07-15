@@ -19,3 +19,4 @@
 <div class="online-store-main products">
         <div class="container">
             <h1>Online store</h1>
+			<div class="row">

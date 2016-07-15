@@ -32,7 +32,7 @@
 					<?php	$image=get_post_meta(125,"first-section-image",true);
 							$thumb = wp_get_attachment_image_src($image, 'why-precision-images' );
 						  ?>
-                        <img src="<?php echo $url = $thumb['0'];?>" class="img-responsive">
+                        <figure><img src="<?php echo $url = $thumb['0'];?>" class="img-responsive"></figure>
                     </div>                 
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-12 make-va">
@@ -63,7 +63,7 @@
 					<?php	$image=get_post_meta(125,"second-section-image",true);
 							$thumb = wp_get_attachment_image_src($image, 'why-precision-images' );
 						  ?>
-                        <img src="<?php echo $url = $thumb['0'];?>" class="img-responsive">
+                        <figure><img src="<?php echo $url = $thumb['0'];?>" class="img-responsive"></figure>
                     </div>                 
                 </div>
                 
@@ -77,7 +77,7 @@
 					<?php	$image=get_post_meta(125,"third-section-image",true);
 							$thumb = wp_get_attachment_image_src($image, 'why-precision-images' );
 						  ?>
-                        <img src="<?php echo $url = $thumb['0'];?>" class="img-responsive">
+                        <figure><img src="<?php echo $url = $thumb['0'];?>" class="img-responsive"></figure>
                     </div>                 
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-12 make-va">

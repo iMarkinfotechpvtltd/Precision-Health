@@ -41,7 +41,7 @@
 					  while ($my_query->have_posts()) : $my_query->the_post(); 
 
 					   $newpost = $post->ID;
-					 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'affilation-images' );
+					 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'team-member-images' );
 						$url = $image_attributes[0];
 						?>
 

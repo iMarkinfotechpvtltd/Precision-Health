@@ -42,12 +42,12 @@ global $product;
 
 					 <div class="why-list-outer">
 							<div class="row">
-							<div class="col-md-4 col-sm-4 col-xs-12 make-va">   
+							<div class="col-md-3 col-sm-4 col-xs-12 ">   
 								<div class="why-img-left">
 									<?php do_action( 'woocommerce_before_single_product_summary' ); //image?> 
 								</div>                 
 							</div>
-							<div class="col-md-8 col-sm-8 col-xs-12 make-va">
+							<div class="col-md-9 col-sm-8 col-xs-12 ">
 								<div class="why-list-text">
 									 <p><?php do_action( 'woocommerce_after_single_product_summary' );//description?></p>
 								</div>

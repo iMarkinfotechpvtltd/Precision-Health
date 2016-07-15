@@ -22,13 +22,12 @@ global $post;?>
             <div class="row">
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="head-neck-inner">
-                        
-						<h2><?php the_title(); ?></h2>
-						<p><?php the_content(); ?> </p>
-						
+                        <article>
+						<h5><?php the_title(); ?></h5>
+						<p><?php the_content(); ?></p>
+							</article>
                     </div>
-
-                    </div>
+                </div>
                 
 
                 <div class="col-md-4 col-sm-4 col-xs-12">

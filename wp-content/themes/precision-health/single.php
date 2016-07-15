@@ -108,82 +108,47 @@ global $post;?>
                         
                         <div class="latest-services-sec">
                             <h5>LATEST SERVICES</h5>
-                            <ul>
+                            <ul><?php
+									$args = array(
+										'type'                     => 'service',
+										'orderby'                  => 'term_id',
+										'taxonomy'                 => 'service-catagory',
+										);
+									$categories = get_categories( $args );
+									foreach ( $categories as $category ) {	
+									?>
                                 <li>
                                     <div class="ser-left">
-                                        <img src="images/latest-ser-img-1.jpg" class="img-responsive">
+                                        <img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive">
                                         
                                     </div>
                                     <div class="ser-right">
-                                        <h6>Chiropractic</h6>
-                                        <p>No matter how much stress you have at work, in your personal </p>
-                                        <a href="#" class="read-link-btn">read more</a>
+                                        <h6><?php echo $name = $category->name ?></h6>
+										<?php 
+                               $posts=get_posts(array(
+										   'showposts' => 1,
+										   'post_type' => 'service',
+										   'tax_query' => array(
+											   array(
+											   'taxonomy' => 'service-catagory',
+											   'field' => 'name',
+											   'terms' => array($name))
+										   ),
+										   'orderby' => 'title',
+										   'order' => 'DESC')
+										);
+										$count=1;
+										foreach($posts as $post)
+										{ ?>
+                                        <p><?php the_title(); ?> </p>
+                                        <a href="<?php the_permalink(); ?>" class="read-link-btn">read more</a>
+										<?php } ?>
                                     </div>
+									
                                 </li>
-                                
-                                <li>
-                                    <div class="ser-left">
-                                        <img src="images/latest-ser-img-2.jpg" class="img-responsive">
-                                        
-                                    </div>
-                                    <div class="ser-right">
-                                        <h6>Massage</h6>
-                                        <p>Everything you read fills your head with new bits of information,  </p>
-                                        <a href="#" class="read-link-btn">read more</a>
-                                    </div>
-                                </li>
-                                
-                                <li>
-                                    <div class="ser-left">
-                                        <img src="images/latest-ser-img-3.jpg" class="img-responsive">
-                                        
-                                    </div>
-                                    <div class="ser-right">
-                                        <h6>Physiotherapy</h6>
-                                        <p>This goes with the above topic: the more you read, the more words you gain  </p>
-                                        <a href="#" class="read-link-btn">read more</a>
-                                    </div>
-                                </li>
-                               
-                                <li>
-                                    <div class="ser-left">
-                                        <img src="images/latest-ser-img-4.jpg" class="img-responsive">
-                                        
-                                    </div>
-                                    <div class="ser-right">
-                                        <h6>Nutrition and Dietetics</h6>
-                                        <p>No matter how much stress you have at work, in your personal   </p>
-                                        <a href="#" class="read-link-btn">read more</a>
-                                    </div>
-                                </li>
-                               
-                                <li>
-                                    <div class="ser-left">
-                                        <img src="images/latest-ser-img-5.jpg" class="img-responsive">
-                                        
-                                    </div>
-                                    <div class="ser-right">
-                                        <h6>Podiatry</h6>
-                                        <p>Everything you read fills your head with new bits of information,  </p>
-                                        <a href="#" class="read-link-btn">read more</a>
-                                    </div>
-                                </li>
-                               
-                                <li>
-                                    <div class="ser-left">
-                                        <img src="images/latest-ser-img-6.jpg" class="img-responsive">
-                                        
-                                    </div>
-                                    <div class="ser-right">
-                                        <h6>Traditional Chinese Medicine</h6>
-                                        <p>This goes with the above topic: the more you read, the more words you </p>
-                                        <a href="#" class="read-link-btn">read more</a>
-                                    </div>
-                                </li>
-                               
-                                
-                                
-                                
+									<?php } ?>
+                                                            
+                                               
                             </ul>
                             
                         </div>

@@ -272,7 +272,7 @@ Team</h1>
 					if( $my_query->have_posts() ) {
 					  while ($my_query->have_posts()) : $my_query->the_post(); 
 					   $newpost = $post->ID;
-					 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'affilation-images' );
+					 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'team-member-images' );
 						$url = $image_attributes[0];
 						?>
                         <div class="item">
@@ -397,7 +397,7 @@ Team</h1>
                         <div class="blog-text wow bounce" data-wow-duration="2s">
                             <div class="blog-text-inner">
                                 <h1><?php the_title(); ?></h1>
-                                <p><?php the_content(); ?></p>
+                                <p><?php $content = get_the_content(); echo mb_strimwidth($content, 0, 200);?></p>
                                 <div class="blog-date">
                                     <p><?php echo get_the_date('D j M Y', $post->ID); ?></p>
                                 </div>

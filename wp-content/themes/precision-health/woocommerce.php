@@ -26,7 +26,9 @@ get_header(); ?>
 
         </div>
     </div>
+	
 <div class="woocommerce">
+	
 		<?php
 
 			woocommerce_content();

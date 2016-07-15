@@ -799,3 +799,33 @@ remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
 add_filter( 'woocommerce_show_page_title', '__return_false' );
 
 remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+/**************************Start Wordpress Logo Function*******************************************/
+
+function custom_loginlogo() {
+echo '<style type="text/css">
+h1 a {background-image: url('.get_bloginfo('template_directory').'/images/logo.png) !important;
+background-size: 100% cover !important;
+background-size: 175px auto !important;
+height: 62px !important;
+width: 100% !important;
+ }
+</style>';
+}
+add_action('login_head', 'custom_loginlogo');
+
+function my_login_logo_url() {
+  return get_bloginfo( 'url' );
+}
+add_filter( 'login_headerurl', 'my_login_logo_url' );
+
+function my_login_logo_url_title() {
+  return 'Precision Health Clinic';
+}
+add_filter( 'login_headertitle', 'my_login_logo_url_title' );
+
+
+
+/**************************End of Wordpress Logo Function***************************************************/
+
+?>

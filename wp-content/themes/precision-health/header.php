@@ -86,14 +86,12 @@
 						);
 						wp_nav_menu( $defaults );
 						?> 
-						
                     </ul>
-<script>
-	
-		jQuery( "ul li ul" ).addClass( "dropdown-menu" );
-		jQuery( "#menu-item-345" ).addClass( "dropdown" );
-		jQuery('#menu-item-345').append('<span class="caret dropdown-toggle" data-toggle="dropdown"></span>')
-	</script>
+					<script>
+					jQuery( "ul li ul" ).addClass( "dropdown-menu" );
+					jQuery( "#menu-item-345" ).addClass( "dropdown" );
+					jQuery('#menu-item-345').append('<span class="caret dropdown-toggle" data-toggle="dropdown"></span>')
+					</script>
                 </div>
             </div>
         </nav>
