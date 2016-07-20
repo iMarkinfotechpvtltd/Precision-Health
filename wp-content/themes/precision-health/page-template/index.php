@@ -11,53 +11,18 @@
 
             <div class="banner-text-cvr">
                 <div class="row">
-                    <div class="col-md-8 make-va">
+                    <div class="col-md-8 col-sm-6 col-xs-12  make-va">
                         <div class="banner-left-text ">
                             <h1>Precision Health<small>Spine and Sports Clinic</small></h1>
                             <p><?php the_field('banner-content',9); ?> <a href="<?php echo get_site_url(); ?>/about" class="banner-btn-link">About us <i class="fa fa-angle-right" aria-hidden="true"></i></a></p>
                         </div>
                     </div>
-                    <div class="col-md-4 make-va">
+                    <div class="col-md-4 col-sm-6 col-xs-12  make-va">
                         <div class="banner-form">
                             <div class="banner-form-in">
                                 <h4>Complete the form</h4>
                                 <p>Duis nec viverra orci. Praesent feugiat pulvinar varius. Vestibulum venenatis ut mauris aliquam euismod. Quisque molestie porta sollicitudin. </p>
                                 <?php echo do_shortcode('[contact-form-7 id="470" title="banner-form"]'); ?>
-						<!--        <form role="form">
-                                    <div class="form-group">
-                                        <input type="name" placeholder="Name" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="tel" placeholder="Contact Number" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" placeholder="Age" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <textarea placeholder="Message" class="form-control"></textarea>
-                                    </div>
-
-                                    <div class="form-group in-line">
-                                        <input type="text" placeholder="Morning" class="form-control">
-                                    </div>
-                                    <div class="form-group in-line">
-                                        <input type="text" placeholder="Afternoon" class="form-control">
-                                    </div>
-                                    <div class="form-group in-line no-mar">
-                                        <input type="text" placeholder="Evening" class="form-control">
-                                    </div>
-
-                                    <div class="form-group cust-checkbox-group">
-                                        <label>
-                                            <input type="checkbox">
-                                            <span class="cust-check"></span> Send me a copy of the form</label>
-
-                                    </div>
-
-                                    <button type="submit" class="banner-form-btn">
-                                        Send Message
-                                    </button>
-                                </form> -->
 								<script>
 								jQuery("#sub-btn").click(function()
 								{
@@ -157,9 +122,9 @@
 								
 							if($count <=7) {?>
                             <li class="wow fadeInDown" data-wow-duration="<?php echo $time1; ?>s">
-                                 <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div></a>
+                                 <a href="javascript:void(0);" onclick="loaddata(<?php echo $id = $category->term_id; ?>);"><div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div></a>
                                 <div class="con-list-text">
-                                    <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name ?> <br></a>
+                                    <a href="javascript:void(0);" onclick="loaddata(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name ?> <br></a>
                                 </div>
 
                             </li>
@@ -196,9 +161,16 @@
 						
                             <li class="wow fadeInDown" data-wow-duration="<?php echo $time1; ?>s">
                                 <div class="con-list-text">
-                                    <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name ?><br></a>
+                                    <a href="javascript:void(0);" onclick="loaddata(<?php echo $id = $category->term_id; ?>);"><?php echo $name = $category->name; 
+									if($name == 'Back Pain'){ 
+									echo '<strong>(Thoracic Spine Pain)</strong>';
+									 } 
+									 if($name == 'Lower Back Pain'){ 
+									echo '<strong>(LUMBAR SPINE PAIN )</strong>';
+									 }?>
+									</a>
                                 </div>
-                                 <a href="javascript:void(0);" onclick="pagination(<?php echo $id = $category->term_id; ?>);"><div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div></a>
+                                 <a href="javascript:void(0);" onclick="loaddata(<?php echo $id = $category->term_id; ?>);"><div class="con-list-img"><img src="<?php echo z_taxonomy_image_url($category->term_id); ?>" class="img-responsive"></div></a>
 
                             </li>
 							
@@ -231,12 +203,17 @@
 								foreach ( $categories as $category ) {
 									if($count==1)
 									{?>
-									<div class="neck-comp-right-inner content">
+								<div id="div1">
+									<div class="neck-comp-right-inner content" id="content-dif">
 										<h1><?php echo $name = $category->name ?></h1>
 										<p><?php echo $des = $category->description  ?>
 										</p>
 									</div>
+								</div>
 								<?php } $count++;}?>
+								<div style="display:none" id="DivImg">
+								<img src="<?php echo esc_url(get_template_directory_uri());?>/images/loader.gif" class="loader-image">
+								</div>
         </div>
     </div>
 
@@ -388,7 +365,7 @@ Team</h1>
 							 $image_attributes = wp_get_attachment_image_src(get_post_thumbnail_id( $newpost ),'home-blog-image' );
 								$url = $image_attributes[0];
 						?>
-                <div class="col-md-6">
+                <div class="col-md-6 col-sm-6 col-xs-12">
                     <div class="blog-page-cover">
                         <div class="blog-img wow fadeIn" data-wow-duration="2s">
                             <img src="<?php echo $url;?>" class="img-responsive">
@@ -432,7 +409,7 @@ Team</h1>
             </div>
 
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="find-info">
                         <h4>Address</h4>
                         <p><?php the_field('address',11); ?></p>
@@ -457,7 +434,7 @@ Team</h1>
 
 
                 </div>
-                <div class="col-md-8 col-md-offset-1">
+                <div class="col-md-8 col-md-offset-1 col-sm-8 col-xs-12">
                     <div class="find-us-form">
 						
 						<?php echo do_shortcode('[contact-form-7 id="453" title="find us home page"]'); ?>
@@ -470,23 +447,7 @@ Team</h1>
 
 
     </div>
-	<script>
-		function pagination(id) {
-			var termid=id;
-			
-            jQuery.ajax({
-                type: "GET",
-                url: "<?php bloginfo('template_url'); ?>/page-template/page1.php",
-                data: {
-                    termid: termid, 
-                    format: 'raw'
-                },
-                success: function (resp) {
-					jQuery('.content').empty().append(resp);
-                }
-            });
-        }
-	</script>
+	
 
 <?php get_footer(); ?>
 

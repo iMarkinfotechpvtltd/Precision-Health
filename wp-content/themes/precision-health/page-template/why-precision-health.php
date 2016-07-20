@@ -27,7 +27,7 @@
             
             <div class="why-list-outer">
                 <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12 make-va">   
+                <div class="col-md-4 col-sm-5 col-xs-12 make-va">   
                     <div class="why-img-left">
 					<?php	$image=get_post_meta(125,"first-section-image",true);
 							$thumb = wp_get_attachment_image_src($image, 'why-precision-images' );
@@ -35,7 +35,7 @@
                         <figure><img src="<?php echo $url = $thumb['0'];?>" class="img-responsive"></figure>
                     </div>                 
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-12 make-va">
+                <div class="col-md-8 col-sm-7 col-xs-12 make-va">
                     <div class="why-list-text">
                          <h4><?php the_field('first-section-heading',125); ?></h4>
                     <ul>
@@ -49,7 +49,7 @@
             <div class="why-list-outer">
                 <div class="row">
                 
-                <div class="col-md-8 col-sm-8 col-xs-12 make-va">
+                <div class="col-md-8 col-sm-7 col-xs-12 make-va">
                     <div class="why-list-text">
                          <h4><?php the_field('second-section-heading',125); ?></h4>
                     <ul>
@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 
-                <div class="col-md-4 col-sm-4 col-xs-12 make-va">   
+                <div class="col-md-4 col-sm-5 col-xs-12 make-va">   
                     <div class="why-img-right">
 					<?php	$image=get_post_meta(125,"second-section-image",true);
 							$thumb = wp_get_attachment_image_src($image, 'why-precision-images' );
@@ -72,7 +72,7 @@
             
             <div class="why-list-outer">
                 <div class="row">
-                <div class="col-md-4 col-sm-4 col-xs-12 make-va">   
+                <div class="col-md-4 col-sm-5 col-xs-12 make-va">   
                     <div class="why-img-left">
 					<?php	$image=get_post_meta(125,"third-section-image",true);
 							$thumb = wp_get_attachment_image_src($image, 'why-precision-images' );
@@ -80,7 +80,7 @@
                         <figure><img src="<?php echo $url = $thumb['0'];?>" class="img-responsive"></figure>
                     </div>                 
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-12 make-va">
+                <div class="col-md-8 col-sm-7 col-xs-12 make-va">
                     <div class="why-list-text">
                          <h4><?php the_field('third-section-heading',125); ?></h4>
                     <ul>

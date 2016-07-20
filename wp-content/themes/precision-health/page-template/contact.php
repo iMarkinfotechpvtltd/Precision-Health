@@ -23,7 +23,7 @@
         <div class="container">
             <h1 class="wow fadeIn" data-wow-duration="2s">How To Get In Touch</h1>
             <div class="row">
-                <div class="col-md-9 wow slideInLeft" data-wow-duration="1s">
+                <div class="col-md-9 col-sm-8 col-xs-12 wow slideInLeft" data-wow-duration="1s">
                    
 				   <?php echo do_shortcode('[contact-form-7 id="13" title="Contact-us"]'); ?>
 				   
@@ -50,7 +50,7 @@
                
 			   </div>
                 
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-4 col-xs-12">
                     <div class="contact-info">
                         <div class="contact-info-list addr-sec wow slideInUp"  data-wow-duration="1s">
                             <h4>Our Adress</h4>

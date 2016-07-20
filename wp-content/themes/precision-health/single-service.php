@@ -15,7 +15,7 @@ global $post;?>
     </div>
 
 
-	<div class="head-neck-main">
+	<div class="head-neck-main inner-service">
         <div class="container">
             <h1>Service</h1>
 			<?php while (have_posts()) : the_post(); ?>
@@ -23,7 +23,8 @@ global $post;?>
                 <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="head-neck-inner">
                         <article>
-						<h5><?php the_title(); ?></h5>
+						<?php $title = get_the_title(); ?>
+						<h5><?php echo $title; ?></h5>
 						<p><?php the_content(); ?></p>
 							</article>
                     </div>
@@ -34,7 +35,7 @@ global $post;?>
                     <div class="custm-accordion head-neck-side-acc">
                        <?php $tax = get_post_taxonomies( $post->ID ); ?>
 						<?php $name = wp_get_post_terms($post->ID, $tax ,  array("fields" => "names")); ?>
-						<?php echo $name[0]; ?>
+						<h2><?php echo $name[0]; ?></h2>
 					   
 					   <ul>
 
@@ -54,7 +55,7 @@ global $post;?>
 							foreach($posts as $post)
 							{ ?>
 					   
-							<li><?php the_title(); ?></li>
+							<li <?php if( $title == get_the_title()){ echo 'class="active"'; } ?>><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 							<?php } ?>
 					   </ul>
 					</div>

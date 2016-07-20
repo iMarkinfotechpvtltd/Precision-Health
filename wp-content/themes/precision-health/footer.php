@@ -20,7 +20,7 @@
 		  <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="footer-about">
                         <h5>About</h5>
 						<?php
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 col-md-offset-1 col-sm-4 col-xs-12">
+                <div class="col-md-4 col-md-offset-1 col-sm-6 col-xs-12">
                     <div class="footer-newsltr">
                         <div class="footer-logo">
 						<?php	$image=get_post_meta(9,"footer-logo",true);
@@ -64,7 +64,7 @@
 
                 </div>
 
-                <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
+                <div class="col-md-3 col-md-offset-1 col-sm-12 col-xs-12">
                     <div class="footer-links">
                         <h5>Important Links</h5>
                         <ul>
@@ -129,9 +129,7 @@
         <?php echo do_shortcode('[contact-form-7 id="223" title="price request"]'); ?>
 		
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+     
     </div>
 
   </div>
@@ -144,17 +142,9 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
 	
 	
-    <script src="<?php echo esc_url(get_template_directory_uri());?>/js/owl.carousel.min.js"></script>
-	<link rel="stylesheet" href="http://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.min.css">
-		 <script src="http://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
-		<script>
-		(function($){
-		   jQuery(window).on("load",function(){
-				jQuery(".content").mCustomScrollbar();
-			   axis:"y"
-			});
-		})(jQuery);
-	   </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.6/owl.carousel.min.js"></script>
+	
+		 
     <script>
         jQuery(document).ready(function () {
 
@@ -163,26 +153,40 @@
 
             owl.owlCarousel({
                 items: 2, //10 items above 1000px browser width
-                itemsDesktop: [1000, 2], //5 items between 1000px and 901px
-                itemsDesktopSmall: [900, 2], // betweem 900px and 601px
-                itemsTablet: [600, 2], //2 items between 600 and 0
-                itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
                 pagination: true,
                 autoPlay: true,
                 loop: true,
-                nav: true
+                nav: true,
+                 responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:2
+        }
+    }
 
             });
             
             owl2.owlCarousel({
                 items: 3, //10 items above 1000px browser width
-                itemsDesktop: [1000, 3], //5 items between 1000px and 901px
-                itemsDesktopSmall: [900, 3], // betweem 900px and 601px
-                itemsTablet: [600, 2], //2 items between 600 and 0
-                itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
                 pagination: true,
                 autoPlay: true,
-                nav: true
+                nav: true,
+                responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:3
+        }
+    }
 
             });
 
@@ -205,14 +209,21 @@
            
             owl1.owlCarousel({
                 items: 4, //10 items above 1000px browser width
-                itemsDesktop: [1000, 3], //5 items between 1000px and 901px
-                itemsDesktopSmall: [900, 2], // betweem 900px and 601px
-                itemsTablet: [600, 2], //2 items between 600 and 0
-                itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
                 pagination: false,
                 autoPlay: true,
                 loop: false,
                 nav: true,
+                responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:4
+        }
+    }
 
             });
 
@@ -246,14 +257,50 @@
 
     <script src="<?php echo esc_url(get_template_directory_uri());?>/js/wow.min.js"></script>
     <script>
-        new WOW().init();
+        wow = new WOW(
+            {
+            mobile:false, 
+            }
+        )
+                    wow.init();
     </script>
-  
-    <script>
-		jQuery( "ul li ul" ).addClass( "dropdown-menu" );
-		jQuery( "#menu-item-345" ).addClass( "dropdown" );
-		jQuery('#menu-item-345').append('<span class="caret dropdown-toggle" data-toggle="dropdown"></span>');
+
+	<script>
+		function loaddata(id) {
+			jQuery('#content-dif').hide();
+			jQuery('#DivImg').show();
+			var termid=id;
+            jQuery.ajax({
+                type: "POST",
+                url: "<?php bloginfo('template_url'); ?>/ajax/page1.php",
+                data: {
+                    termid: termid, 
+                    format: 'raw'
+                },
+                success: function (resp) {
+					//alert(resp);
+					jQuery('#DivImg').hide();
+					jQuery('#div1').empty().append(resp);
+					jQuery('#content-dif').show();	
+                }
+            });
+        }
 	</script>
+<script>
+var p = document.querySelectorAll('p:empty');
+for(var i = p.length - 1; i > -1; i-- ) {
+    p[i].parentNode.removeChild(p[i]);
+}
+</script>
+<script src="http://cdn.jsdelivr.net/jquery.mcustomscrollbar/3.0.6/jquery.mCustomScrollbar.concat.min.js"></script>
+		<script>
+		(function($){
+		   jQuery(window).on("load",function(){
+				jQuery(".content").mCustomScrollbar();
+			   axis:"y"
+			});
+		})(jQuery);
+	   </script>
 </body>
 
 </html>

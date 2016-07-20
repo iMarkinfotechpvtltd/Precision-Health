@@ -36,7 +36,7 @@
 				$categories = get_categories( $args );
 				foreach ( $categories as $category ) {	
 				?>
-                <div class="col-md-4 col-sm-4 col-xs-12 wow bounceInUp" data-wow-duration="1.2s">
+                <div class="col-md-4 col-sm-6 col-xs-12 wow bounceInUp" data-wow-duration="1.2s">
                     <div class="service-list">
                         <div class="service-img">
 						<img class="img-responsive" src="<?php echo z_taxonomy_image_url($category->term_id); ?>"> 
@@ -92,7 +92,7 @@
 					
 					foreach($posts1 as $post)
 					{ ?>
-                <div class="col-md-4 col-sm-4 col-xs-12 wow bounceInUp" data-wow-duration="1.2s">
+                <div class="col-md-4 col-sm-6 col-xs-12 wow bounceInUp" data-wow-duration="1.2s">
                     <div class="service-list">
                         <div class="service-img">
 						<?php    $newpost = $post->ID;

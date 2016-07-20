@@ -210,7 +210,7 @@ get_header(); ?>
                         <div class="twitter-sec">
                             <h5>Twitter</h5>
                             
-                            <img src="images/twitter-img.jpg" class="img-responsive">
+                            <img src="<?php echo esc_url(get_template_directory_uri());?>/images/twitter-img.jpg" class="img-responsive">
                             
                         </div>
                         
